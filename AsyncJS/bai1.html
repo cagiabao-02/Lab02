@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        function whereAmI(lat, lng ){
+            fetchData = fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+                .then((data)=>{
+                    return data.json();
+                })
+                .then(data => {
+                   console.log("you are in " + data.city + ", " + data.country);
+                })
+                .catch(err => {
+                    console.error("Lỗi:", err.message);
+                });
+
+   
+        }
+        whereAmI(51.50354, -0.12768);
+    </script>
+</body>
+</html>
